@@ -29,7 +29,7 @@ const FeatureList = [
     description: (
       <>
         Our flagship product, the only AMM (automated market maker) swap
-        on MultiversX! TVL at 5k EGLD via the 🪄 of DeFi! Loan NFTs for capital!
+        on MultiversX! 1MM TVL via the 🪄 of DeFi! Loan NFTs for capital!
       </>
     ),
   },
