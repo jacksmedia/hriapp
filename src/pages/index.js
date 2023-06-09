@@ -4,6 +4,8 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import ListJSON from '@site/src/components/ListJSON';
+
 
 import styles from './index.module.css';
 
@@ -34,23 +36,6 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div>
-          <p>WIP wallet buttons</p>
-          <button id="button-login-mobile">xPortal</button>
-          <button id="button-login-extension">Browser Extension</button>
-          <button id="button-logout">Logout</button>
-          <div id="qr-code-container" class="qr-code-container"></div>
-          <button id="button-tx">Send</button>
-
-        </div>
-        <p>Still working to grok ElvenTools, almost finished! 🛣️🏁</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Brief HRI Tutorial
-          </Link>
-        </div>
       </div>
     </header>
   );
@@ -64,6 +49,7 @@ export default function Home() {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
+        <ListJSON />
         <HomepageFeatures />
       </main>
     </Layout>
