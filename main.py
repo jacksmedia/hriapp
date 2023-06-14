@@ -1,7 +1,14 @@
-# This is a sample Python script.
+# Kyeto & xJ4cks
+# Reads MultiversX blockchain & writes calculations
+# based upon owership of the following collections:
+# COMBEYS-bc640d 
+# COMBOTS-aa4150 
+# soon -- COMBIENS-xxxxxx
+# 2023Q2 MIT License
 
 import requests
 import pandas as pd
+import time
 
 def tryAgain():
     exitLoop = False
@@ -22,7 +29,7 @@ def getHolderTable(collectionID, filename, rankDataFile):
     holderData = pd.DataFrame(columns=header)
     rankData = pd.read_csv(rankDataFile)
 
-    data = requests.get('https://api.elrond.com/collections/' + collectionID + '/nfts/count')
+    data = requests.get('https://api.multiversx.com/collections/' + collectionID + '/nfts/count')
     if data.status_code == 200:
         collectionCount = int(data.content)
         print("Collection count:" + str(collectionCount))
@@ -34,7 +41,7 @@ def getHolderTable(collectionID, filename, rankDataFile):
                     fromNFT = fromNFT + MAXPACKETSIZE
                 j = 0
                 try:
-                    data = requests.get('https://api.elrond.com/collections/' + collectionID + '/nfts?from=' + str(fromNFT) +'&size=' + str(MAXPACKETSIZE) + '&withOwner=true')
+                    data = requests.get('https://api.multiversx.com/collections/' + collectionID + '/nfts?from=' + str(fromNFT) +'&size=' + str(MAXPACKETSIZE) + '&withOwner=true')
                     data.raise_for_status()
                     parsedCollection = data.json()
                     print(type(parsedCollection))
@@ -120,12 +127,25 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
         HRI = (combeysHRI + combotsHRI)/2
         if owner != "No Data":
             holderHRITable.loc[len(holderHRITable)] = [str(owner), float(HRI)]
-            print(str(owner) + ", " + str(HRI))
+            print(str(owner) + ", " + str(HRI)) # sets data as comma-seprarated (csv)
+    # writes calculations to spreadsheet, name on line 132
+    holderHRITable.to_csv('HolderHRI.csv', index=False)
+    # writes calculation to object file, name on line 135
+    jsonTable = holderHRITable.to_json(orient='index')
+    file = open('data.json', 'w')
+    file.write(jsonTable)
+    file.close()
+    
 
-    holderHRITable.to_csv("HolderHRI.csv", index=False)
+    # timestamp is taken and then injected into the React app in component dir
+    seconds = time.time()
+    local_time = time.ctime(seconds)
+    print("Local Earth time is now:", local_time)
+    jsonTimestamp = local_time.to_json(orient='index')
+    text_file = open("./src/components/Timestamp/timestamp.json", "wt")
+    text_file.write(jsonTimestamp)
+    text_file.close()
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
     getHolderTable("COMBEYS-bc640d", "CombeyHolder.csv", "CombeysRanking.csv")
