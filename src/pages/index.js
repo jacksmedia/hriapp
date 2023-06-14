@@ -4,7 +4,6 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Timestamp from '@site/src/components/Timestamp';
 import ListJSON from '@site/src/components/ListJSON';
 
 import styles from './index.module.css';

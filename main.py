@@ -9,6 +9,7 @@
 import requests
 import pandas as pd
 import time
+import json
 
 def tryAgain():
     exitLoop = False
@@ -131,20 +132,21 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
     # writes calculations to spreadsheet, name on line 132
     holderHRITable.to_csv('HolderHRI.csv', index=False)
     # writes calculation to object file, name on line 135
-    jsonTable = holderHRITable.to_json(orient='index')
-    file = open('data.json', 'w')
+    jsonTable = holderHRITable.to_json(orient='records')
+    file = open('./src/components/ListJSON/data.json', 'w')
     file.write(jsonTable)
     file.close()
     
 
-    # timestamp is taken and then injected into the React app in component dir
-    seconds = time.time()
-    local_time = time.ctime(seconds)
-    print("Local Earth time is now:", local_time)
-    jsonTimestamp = local_time.to_json(orient='index')
-    text_file = open("./src/components/Timestamp/timestamp.json", "wt")
-    text_file.write(jsonTimestamp)
-    text_file.close()
+    # timestamp is taken and then injected into the React app in component dir (WIP)
+    # seconds = time.time()
+    # local_time = time.ctime(seconds)
+    # # local_time = '{"timestamp":'+local_time+'}'
+    # jsonTimestamp = json.loads(local_time)
+    # jsonTimestamp = json.dumps(jsonTimestamp)
+    # text_file = open("./src/components/Timestamp/timestamp.json", "wt")
+    # text_file.write(jsonTimestamp)
+    # text_file.close()
 
 if __name__ == '__main__':
 
