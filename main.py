@@ -136,7 +136,6 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
     file = open('./src/components/ListJSON/data.json', 'w')
     file.write(jsonTable)
     file.close()
-    
 
     # timestamp is taken and then injected into the React app in component dir (WIP)
     # seconds = time.time()
