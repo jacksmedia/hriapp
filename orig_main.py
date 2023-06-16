@@ -8,7 +8,20 @@
 
 import requests
 import pandas as pd
+import time
 import json
+
+def tryAgain():
+    exitLoop = False
+    choice = True
+    while not (exitLoop):
+        choice = input('Retry y/n?:')
+        exitLoop = (choice == 'y' or choice == 'n')
+
+    if choice == 'y':
+        return True
+    else:
+        return False
 
 def getHolderTable(collectionID, filename, rankDataFile):
 
@@ -35,13 +48,28 @@ def getHolderTable(collectionID, filename, rankDataFile):
                     print(type(parsedCollection))
                 except requests.exceptions.HTTPError as errh:
                     print("Http Error:", errh)
-                    break
+                    if tryAgain():
+                        i -= 1
+                        j -= 1
+                        continue
+                    else:
+                        break
                 except requests.exceptions.ConnectionError as errc:
                     print("Error Connecting:", errc)
-                    break
+                    if tryAgain():
+                        i -= 1
+                        j -= 1
+                        continue
+                    else:
+                        break
                 except requests.exceptions.Timeout as errt:
                     print("Timeout Error:", errt)
-                    break
+                    if tryAgain():
+                        i -= 1
+                        j -= 1
+                        continue
+                    else:
+                        break
                 except requests.exceptions.RequestException as err:
                     print("Exception error, break", err)
                     break
@@ -57,12 +85,11 @@ def getHolderTable(collectionID, filename, rankDataFile):
             holderData.loc[len(holderData)] = row
             j = j + 1
 
-        holderData.to_csv(filename, index=False)
-
     else:
         print("HTTP error :"+ str(data.status_code))
         print(data.text)
 
+    holderData.to_csv(filename, index=False)
 
 def getHRITable(combeyHolderFile, combotsHolderFile):
 
@@ -86,31 +113,39 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
 
         if combeysSum > 0:
             combeysHRI = combeysRankMean/(2*combeysSum)
-            if combeysSum < 10:
-                combeysHRI += 10 - combeysSum
         else:
-            combeysHRI = 50
+            combeysHRI = 0
+        if combeysSum < 10:
+            combeysHRI += 10 - combeysSum
 
         if combotsSum > 0:
             combotsHRI = combotsRankMean/(2*combotsSum)
-            if combotsSum < 10:
-                combotsHRI += 10 - combotsSum
         else:
-            combotsHRI = 50
+            combotsHRI = 0.0
+        if combotsSum < 10:
+            combotsHRI += 10 - combotsSum
 
         HRI = (combeysHRI + combotsHRI)/2
         if owner != "No Data":
             holderHRITable.loc[len(holderHRITable)] = [str(owner), float(HRI)]
-            #print(str(owner) + ", " + str(HRI))
-
-
-    # writes calculations to spreadsheet in this dir
+            print(str(owner) + ", " + str(HRI)) # sets data as comma-seprarated (csv)
+    # writes calculations to spreadsheet, name on line 132
     holderHRITable.to_csv('HolderHRI.csv', index=False)
-    # writes calculations to the component that builds the list on the website
+    # writes calculation to object file, name on line 135
     jsonTable = holderHRITable.to_json(orient='records')
     file = open('./src/components/ListJSON/data.json', 'w')
     file.write(jsonTable)
     file.close()
+
+    # timestamp is taken and then injected into the React app in component dir (WIP)
+    # seconds = time.time()
+    # local_time = time.ctime(seconds)
+    # # local_time = '{"timestamp":'+local_time+'}'
+    # jsonTimestamp = json.loads(local_time)
+    # jsonTimestamp = json.dumps(jsonTimestamp)
+    # text_file = open("./src/components/Timestamp/timestamp.json", "wt")
+    # text_file.write(jsonTimestamp)
+    # text_file.close()
 
 if __name__ == '__main__':
 
