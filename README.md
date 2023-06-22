@@ -1,11 +1,10 @@
 # HRI app, a Jacks.Media tool for Combased.io
 
-The result of this code is deployed here []().
+The result of this code is [deployed here](https://comverse.netlify.app/).
 
 This webapp provides calculations of metadata based upon wallet addresses on the MultiversX blockchain.
 
 Features:
-- input wallet address, receive HRI score (custom logic)
 - data in table form to explain HRI scores
 - outlinks to client resources
 
