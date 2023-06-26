@@ -116,4 +116,5 @@ if __name__ == '__main__':
 
     getHolderTable("COMBEYS-bc640d", "CombeyHolder.csv", "CombeysRanking.csv")
     getHolderTable("COMBOTS-aa4150", "CombotsHolder.csv", "CombotsRanking.csv")
-    getHRITable("CombeyHolder.csv", "CombotsHolder.csv")
+    #getHolderTable("COMBIENS-fa4177", "CombiensHolder.csv", "CombiensRanking.csv")
+    getHRITable("CombeyHolder.csv", "CombotsHolder.csv") # , "CombiensHolder.csv")
