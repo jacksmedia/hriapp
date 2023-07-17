@@ -108,7 +108,7 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
     holderHRITable.to_csv('HolderHRI.csv', index=False)
     # writes calculations to the component that builds the list on the website
     jsonTable = holderHRITable.to_json(orient='records')
-    file = open('./src/components/ListJSON/data.json', 'w')
+    file = open('../../src/components/ListJSON/data.json', 'w')
     file.write(jsonTable)
     file.close()
 
