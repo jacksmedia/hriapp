@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+import { schedule } from '@netlify/functions'
 
 // This is sample build hook
 const BUILD_HOOK = 'https://api.netlify.com/build_hooks/64b5d77d9e23c6177db3e2bc'
@@ -15,6 +16,4 @@ const deployer = async () => {
   }
 }
 
-export {
-  deployer
-}
+export.deployer = schedule("@hourly", deployer);
