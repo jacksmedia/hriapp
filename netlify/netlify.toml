@@ -1,0 +1,8 @@
+# netlify.toml 2023Q3
+[build]
+  functions = "functions/"
+
+[[redirects]]
+  from = '/api/*'
+  to = '/.netlify/functions/:splat'
+  status = 200
