@@ -111,9 +111,9 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
     file = open('./src/components/ListJSON/data.json', 'w')
     file.write(jsonTable)
     file.close()
-    file = open('./src/netlify/functions/data.json', 'w')
-    file.write(jsonTable)
-    file.close()
+    # file = open('./src/netlify/functions/data.json', 'w')
+    # file.write(jsonTable)
+    # file.close()
 
 if __name__ == '__main__':
 
