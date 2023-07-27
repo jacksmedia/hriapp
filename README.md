@@ -32,6 +32,12 @@ This command starts a local development server as well as a lambda proxy server.
 
 Modify and add to functions in this directory & Netlify will build them.
 
+This is the test of the API response function, endpoint.ts:
+
+```http://localhost:8888/api/ endpoint?input=erd1f4dw0ws0rv8kdwhm5s62ywchldr6l0l2gq36s7k7ky4cc0ya0saqnkpwtn```
+
+![endpointts.png](./endpointts.png)
+
 This is the test of the blockchain scraper & collation function, still not working as expected in typescript vs python:
 
 ```http://localhost:8888/api/main```
