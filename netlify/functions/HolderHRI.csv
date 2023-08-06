@@ -1,3 +1,4 @@
+cat <<POEE >> HolderHRI.csv
 Owner,HRI
 erd1np3wxmn6vl536xmahpvtcman7mljzg332xx8tpv8gq0k92pus69qhtnygl,8.761061130334486
 erd1k4umqhapvve4d30nv3p7u4dxcyjmzdnly4thkvx7xn82mzufcjqq76vlqm,3.4730366706064686
@@ -289,3 +290,4 @@ erd1q4cywc9nmfapprvuqhwy9nsdg9m52dgqg8xph927g8uw4qzej93qknpafl,146.0
 erd1uvuphpyjz3y2cdk5e6rs2tllvzsaxqy2leyl6fx3s70erh8rl5tsdkmegg,169.25
 erd1f48rayfnkqn48yjkm2macdgl7gpveq2359jayuez6fm2rc2ppekqwx9r4z,177.25
 erd13s5dy0dnv9qyu0h3gahr3vytsej2nnmggzfcq3heujffhtjv3muq5h2s37,225.0
+POEE
