@@ -3,7 +3,7 @@ const fs = require('fs');
 const csv = require('csv-parser');
 
 const app = express();
-const PORT = 3000;
+const PORT = 7000;
 
 const csvFilePath = 'HolderHRI.csv'; // point to the component dir!
 

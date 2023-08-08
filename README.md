@@ -26,7 +26,7 @@ $ npm install
 node appy.js
 ```
 
-Runs the express ewndpoint locally. Can be tested in against the local CSV in this way:
+Runs the express endpoint locally. Can be tested in against the local CSV in this way:
 `http://localhost:3000/hri/erd159mypt4myss3mqrs89ft0hjeacffks2690gq9u3mlh73m9sh0w5s09eqhh`
 
 
@@ -42,7 +42,7 @@ Modify and add to functions in this directory & Netlify will build them.
 
 This is the test of the API response function, endpoint.ts:
 
-```http://localhost:8888/api/ endpoint?input=erd1f4dw0ws0rv8kdwhm5s62ywchldr6l0l2gq36s7k7ky4cc0ya0saqnkpwtn```
+```http://localhost:8888/api/endpoint?input=erd1f4dw0ws0rv8kdwhm5s62ywchldr6l0l2gq36s7k7ky4cc0ya0saqnkpwtn```
 
 ![endpointts.png](./endpointts.png)
 
