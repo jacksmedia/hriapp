@@ -23,6 +23,14 @@ $ npm install
 ### Local Development
 
 ```
+node appy.js
+```
+
+Runs the express ewndpoint locally. Can be tested in against the local CSV in this way:
+`http://localhost:3000/hri/erd159mypt4myss3mqrs89ft0hjeacffks2690gq9u3mlh73m9sh0w5s09eqhh`
+
+
+```
 $ netlify dev
 ```
 
