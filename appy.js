@@ -7,14 +7,12 @@ const PORT = 3000;
 
 const csvFilePath = 'HolderHRI.csv'; // point to the component dir!
 
-// app.use(csv()); // middleware invoked huzzah
-
 // GET http handler
 app.get('/hri/:entry', (req, res) => {
 	const entry = req.params.entry;
 
 	// read, search CSV data
-	const results = [];
+	let results = [];
 	fs.createReadStream(csvFilePath)
 		.pipe(csv())
 		.on('data', (row) => {
@@ -23,11 +21,25 @@ app.get('/hri/:entry', (req, res) => {
 			}
 		})
 		.on('end', () => {
-			if (results.length > 0) {
-				res.json({ match: results });
+			if (results.length > 0) { // all ranks assigned
+				if (results < 5.49) {
+			        results = "Alpha";
+			    } else if (results >= 5.5 && results <= 8.19) {
+			        results = "Prime";
+			    } else if (results >= 8.2 && results <= 9.99) {
+			        results = "Royal";
+			    } else if (results >= 10 && results <= 24.99) {
+			        results = "Sage";
+			    } else if (results >= 25 && results <= 49.99) {
+			        results = "Mentor";
+			    } else {
+			        results = "Innovator";
+			    }
+				res.json({ rank: results });
 			} else {
 				res.status(404).json({ error: 'This erd Holder Rank Index was not found.'});
 			}
+			console.log(results);
 		});
 });
 
