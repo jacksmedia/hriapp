@@ -21,19 +21,28 @@ app.get('/hri/:entry', (req, res) => {
 			}
 		})
 		.on('end', () => {
-			if (results.length > 0) { // all ranks assigned
+			if (results.length > 0) { 
+			// all ranks assigned upon Discord Role IDs
+			//Innovator: 932291483845918720
+			//Mentor: 932291519497510922
+			//Sage: 932291554779992124
+			//Royal: 932291594105790544
+			//Prime: 951930951477375016
+			//Alpha: 977151467871932426
+			//
+			//
 				if (results < 5.49) {
-			        results = "Alpha";
+			        results = "977151467871932426";
 			    } else if (results >= 5.5 && results <= 8.19) {
-			        results = "Prime";
+			        results = "951930951477375016";
 			    } else if (results >= 8.2 && results <= 9.99) {
-			        results = "Royal";
+			        results = "932291594105790544";
 			    } else if (results >= 10 && results <= 24.99) {
-			        results = "Sage";
+			        results = "932291554779992124";
 			    } else if (results >= 25 && results <= 49.99) {
-			        results = "Mentor";
+			        results = "932291519497510922";
 			    } else {
-			        results = "Innovator";
+			        results = "932291483845918720";
 			    }
 				res.json({ rank: results });
 			} else {
