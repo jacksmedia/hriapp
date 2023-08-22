@@ -13,6 +13,8 @@ app.get('/hri/:entry', (req, res) => {
 
 	// read, search CSV data
 	let results = [];
+	let rmTheseRanks = [];
+	let addThisRank = [];
 	fs.createReadStream(csvFilePath)
 		.pipe(csv())
 		.on('data', (row) => {
@@ -22,29 +24,39 @@ app.get('/hri/:entry', (req, res) => {
 		})
 		.on('end', () => {
 			if (results.length > 0) { 
-			// all ranks assigned upon Discord Role IDs
-			//Innovator: 932291483845918720
-			//Mentor: 932291519497510922
-			//Sage: 932291554779992124
-			//Royal: 932291594105790544
-			//Prime: 951930951477375016
-			//Alpha: 977151467871932426
-			//
-			//
+				// all ranks assigned upon Discord Role IDs
+				const Innovator = "932291483845918720";
+				const Mentor = "932291519497510922";
+				const Sage = "932291554779992124";
+				const Royal = "932291594105790544";
+				const Prime = "951930951477375016";
+				const Alpha = "977151467871932426";
+				//
 				if (results < 5.49) {
-			        results = "977151467871932426";
+			        // results = "977151467871932426";
+			        addThisRank.push(Alpha);
+			        rmTheseRanks = [Innovator, Mentor, Sage, Royal, Prime];
 			    } else if (results >= 5.5 && results <= 8.19) {
-			        results = "951930951477375016";
+			        addThisRank.push(Prime);
+			        rmTheseRanks = [Innovator, Mentor, Sage, Royal, Alpha];
 			    } else if (results >= 8.2 && results <= 9.99) {
-			        results = "932291594105790544";
+			        addThisRank.push(Royal);
+			        rmTheseRanks = [Innovator, Mentor, Sage, Prime, Alpha];
 			    } else if (results >= 10 && results <= 24.99) {
-			        results = "932291554779992124";
+			        addThisRank.push(Sage);
+			        rmTheseRanks = [Innovator, Mentor, Royal, Prime, Alpha];
 			    } else if (results >= 25 && results <= 49.99) {
-			        results = "932291519497510922";
+			        addThisRank.push(Mentor);
+			        rmTheseRanks = [Innovator, Sage, Royal, Prime, Alpha];
 			    } else {
-			        results = "932291483845918720";
+			        addThisRank.push(Innovator);
+			        rmTheseRanks = [Mentor, Sage, Royal, Prime, Alpha];
 			    }
-				res.json({ rank: results });
+				// return Rank to Add, Ranks to Remove
+				res.json({
+					assign: addThisRank,
+					remove: rmTheseRanks 
+				});
 			} else {
 				res.status(404).json({ error: 'This erd Holder Rank Index was not found.'});
 			}
