@@ -111,13 +111,13 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
     file = open('./src/components/ListJSON/data.json', 'w')
     file.write(jsonTable)
     file.close()
-    # file = open('./src/netlify/functions/data.json', 'w')
-    # file.write(jsonTable)
-    # file.close()
+    file = open('./netlify/functions/data.json', 'w')
+    file.write(jsonTable)
+    file.close()
 
 if __name__ == '__main__':
 
-    getHolderTable("COMBEYS-bc640d", "CombeyHolder.csv", "CombeysRanking.csv")
-    getHolderTable("COMBOTS-aa4150", "CombotsHolder.csv", "CombotsRanking.csv")
+    getHolderTable("COMBEYS-bc640d", "~/hriapp/CombeyHolder.csv", "~/hriapp/CombeysRanking.csv")
+    getHolderTable("COMBOTS-aa4150", "~/hriapp/CombotsHolder.csv", "~/hriapp/CombotsRanking.csv")
     #getHolderTable("COMBIENS-fa4177", "CombiensHolder.csv", "CombiensRanking.csv")
-    getHRITable("CombeyHolder.csv", "CombotsHolder.csv") # , "CombiensHolder.csv")
+    getHRITable("~/hriapp/CombeyHolder.csv", "~/hriapp/CombotsHolder.csv") # , "CombiensHolder.csv")
