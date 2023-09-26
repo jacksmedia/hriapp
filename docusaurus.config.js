@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ComVerse Holders Rank Index',
-  tagline: 'Combeys + Combots ranks for all holders, computed 4x daily',
+  tagline: 'Combeys + Combots ranks for all holders',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
