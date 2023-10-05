@@ -22,14 +22,6 @@ AWS Lightsail works well as a cloud instance for running the API; the optional w
 ```$ python main.py ```
 
 ## How to Run API server
-Locally, for testing:
-```
-$ netlify dev
-```
-This command starts a local development server as well as a lambda proxy server. Use the following link to test the 'hello' API function in ```src/netlify/functions``` directory:
-
-```http://localhost:8888/api/hello?name=Viktor```
-
 Either locally or deployed in your cloud, this command starts the API running 24/7/365:
 
 ```$ node appy.js```
@@ -67,6 +59,6 @@ Once you have your own copy of this repo set up like this, the included **locald
 ```
 0 */4 * * * source ./localdaemon.sh
 ```
-
+Finally, depending upon your cloud instance, you may need to use multiple ```screen``` sessions (especially if you're both running the API and wanting to work in the instance simultaneously). The localdaemon running via *crond* won't disturb the express server in AWS Lightsail-- this has not been tested in other clouds.
 
 See [Netlify docs](https://www.netlify.com/products/deploy-previews/?utm_medium=paid_search&utm_source=google&utm_campaign=GS_Connect:+Netlify+Brand&utm_term=netlify) for more info about signing up, and then hosting this on (currently still free!) tier.
