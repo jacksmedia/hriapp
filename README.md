@@ -11,23 +11,18 @@ This app provides calculations of metadata based upon wallet addresses on the Mu
 - same blockchain-fresh data as API, in table form
 - outlinks to client resources
 
-The optional website built by this code is [deployed here](https://comverse.netlify.app/). This is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. Netlify is used for cloud functions and hosting, (and suggested for any variants ofc).
+AWS Lightsail works well as a cloud instance for running the API; the optional website built by this code is [deployed here](https://comverse.netlify.app/): this is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator, using Netlify free tier for website hosting..
 
 ## Installation of Dependencies
-```
-pip install -r requirements.txt
-```
+1. ```pip install -r requirements.txt```
 
-```
-$ yarn
-```
-Or
-```
-$ npm install
-```
+2. ``` $ yarn ``` Or ``` $ npm install```
+
+## How to Scrape the Blockchain
+```python main.py ```
 
 ## How to Run API server
-
+Locally, for testing:
 ```
 $ netlify dev
 ```
@@ -35,11 +30,10 @@ This command starts a local development server as well as a lambda proxy server.
 
 ```http://localhost:8888/api/hello?name=Viktor```
 
-With express endpoints running locally, they can be tested against the CSVs in this way:
+With express endpoints running locally, they can be tested against the collected CSVs in this way:
 `http://localhost:3000/hri/erd159mypt4myss3mqrs89ft0hjeacffks2690gq9u3mlh73m9sh0w5s09eqhh`
 
 When deployed to a cloud instance, you will need to expose the HTML port and aim at your instance in a similar fashion, like this:
-
 ```
 node appy.js
 ```
