@@ -1,16 +1,23 @@
-# HRI app, a Jacks.Media tool for Combased.io
+# HRI app, a Jacks.Media project for [Combased.io](http//combased.io)
 
-The result of this code is [deployed here](https://comverse.netlify.app/).
+This app provides calculations of metadata based upon wallet addresses on the MultiversX blockchain.
 
-This webapp provides calculations of metadata based upon wallet addresses on the MultiversX blockchain.
+### Features:
+- serves data (API endpoints) after updating local files from blockchain
+- built for automation via linux cron daemon
 
-Features:
-- data in table form to explain HRI scores
+The optional website built by this code is [deployed here](https://comverse.netlify.app/).
+
+### Features:
+- same blockchain-fresh data as API, in table form
 - outlinks to client resources
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. Netlify is used for cloud functions and hosting.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. Netlify is used for cloud functions and hosting, (and suggested for any variants ofc).
 
 ### Installation
+```
+pip install -r requirements.txt
+```
 
 ```
 $ yarn
@@ -20,7 +27,7 @@ Or
 $ npm install
 ```
 
-### Local Development
+### Run API server
 
 ```
 node appy.js
@@ -60,4 +67,12 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
-See [Netlify docs](https://www.netlify.com/products/deploy-previews/?utm_medium=paid_search&utm_source=google&utm_campaign=GS_Connect:+Netlify+Brand&utm_term=netlify) for info about signing up, and then hosting this. Logging in with GitHub will make the deployments very easy, and also continuous. 
+Use ```crond``` to automate the blockchain scraping. Here is a suggested, 4-hour routine:
+
+```
+0 */4 * * * python ./main.py
+```
+
+The included localdaemon.sh will build and commit changes to the local files and push to GitHub, which will then trigger Netlify to create the optional website.
+
+See [Netlify docs](https://www.netlify.com/products/deploy-previews/?utm_medium=paid_search&utm_source=google&utm_campaign=GS_Connect:+Netlify+Brand&utm_term=netlify) for more info about signing up, and then hosting this.
