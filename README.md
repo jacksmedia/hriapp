@@ -30,16 +30,16 @@ This command starts a local development server as well as a lambda proxy server.
 
 ```http://localhost:8888/api/hello?name=Viktor```
 
+Either locally or deployed in your cloud, this command starts the API running 24/7/365:
+
+```$ node appy.js```
+
 With express endpoints running locally, they can be tested against the collected CSVs in this way:
 `http://localhost:3000/hri/erd159mypt4myss3mqrs89ft0hjeacffks2690gq9u3mlh73m9sh0w5s09eqhh`
-
-Deploy this code in your cloud, then use this command to start the API running 24/7/365:
-```$ node appy.js```
 
 When deployed to a cloud instance, you will need to expose the HTML port and aim at your instance in a similar fashion, like this:
 
 `http://your-ip/hri/erd159mypt4myss3mqrs89ft0hjeacffks2690gq9u3mlh73m9sh0w5s09eqhh`
-
 
 
 ## Build Optional Website Locally
