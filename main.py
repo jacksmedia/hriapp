@@ -106,14 +106,14 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
 
     # writes calculations to spreadsheet in this dir
     holderHRITable.to_csv('~/hriapp/HolderHRI.csv', index=False)
-    # # writes calculations to the component that builds the list on the website
-    # jsonTable = holderHRITable.to_json(orient='records')
-    # file = open('./src/components/ListJSON/data.json', 'w')
-    # file.write(jsonTable)
-    # file.close()
-    # file = open('./netlify/functions/data.json', 'w')
-    # file.write(jsonTable)
-    # file.close()
+    # writes calculations to the component that builds the list on the website
+    jsonTable = holderHRITable.to_json(orient='records')
+    file = open('./src/components/ListJSON/data.json', 'w')
+    file.write(jsonTable)
+    file.close()
+    file = open('./netlify/functions/data.json', 'w')
+    file.write(jsonTable)
+    file.close()
 
 if __name__ == '__main__':
 
