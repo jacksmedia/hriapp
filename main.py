@@ -106,17 +106,14 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
 
     now = datetime.now() # for logfile name
 
-    # writes calculations to spreadsheet in this dir
+    # writes calculations to spreadsheet in this dir, for Discord bot
     holderHRITable.to_csv('~/hriapp/HolderHRI.csv', index=False)
+    # logfile, for recordkeeping
+    holderHRITable.to_csv(f'~/hriapp/HolderHRI-{now}.csv', index=False)
+    
     # writes calculations to the component that builds the list on the website
     jsonTable = holderHRITable.to_json(orient='records')
     file = open('./src/components/ListJSON/data.json', 'w') # website component
-    file.write(jsonTable)
-    file.close()
-    file = open('./netlify/functions/data.json', 'w') # actual API data
-    file.write(jsonTable)
-    file.close()
-    file = open(f'./netlify/functions/data-{now}.json', 'w') # logfile, for recordkeeping
     file.write(jsonTable)
     file.close()
 
