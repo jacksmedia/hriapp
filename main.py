@@ -105,11 +105,11 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
             #print(str(owner) + ", " + str(HRI))
 
     now = datetime.now() # for logfile name
-
+    ## ensure these directory refs are accurate to your machine! These are mine, ofc
     # writes calculations to spreadsheet in this dir, for Discord bot
-    holderHRITable.to_csv('~/hriapp/HolderHRI.csv', index=False)
+    holderHRITable.to_csv('~/Documents/GitHub/hriapp/HolderHRI.csv', index=False)
     # logfile, for recordkeeping
-    holderHRITable.to_csv(f'~/hriapp/HolderHRI-{now}.csv', index=False)
+    holderHRITable.to_csv(f'~/Documents/GitHub/hriapp/HolderHRI-{now}.csv', index=False)
     
     # writes calculations to the component that builds the list on the website
     jsonTable = holderHRITable.to_json(orient='records')
@@ -118,8 +118,8 @@ def getHRITable(combeyHolderFile, combotsHolderFile):
     file.close()
 
 if __name__ == '__main__':
-
-    getHolderTable("COMBEYS-bc640d", "~/hriapp/CombeyHolder.csv", "~/hriapp/CombeysRanking.csv")
-    getHolderTable("COMBOTS-aa4150", "~/hriapp/CombotsHolder.csv", "~/hriapp/CombotsRanking.csv")
+## ensure these directory refs are accurate to your machine! These are mine, ofc
+    getHolderTable("COMBEYS-bc640d", "~/Documents/GitHub/hriapp/CombeyHolder.csv", "~/Documents/GitHub/hriapp/CombeysRanking.csv")
+    getHolderTable("COMBOTS-aa4150", "~/Documents/GitHub/hriapp/CombotsHolder.csv", "~/Documents/GitHub/hriapp/CombotsRanking.csv")
     #getHolderTable("COMBIENS-fa4177", "CombiensHolder.csv", "CombiensRanking.csv")
-    getHRITable("~/hriapp/CombeyHolder.csv", "~/hriapp/CombotsHolder.csv") # , "CombiensHolder.csv")
+    getHRITable("~/Documents/GitHub/hriapp/CombeyHolder.csv", "~/Documents/GitHub/hriapp/CombotsHolder.csv") # , "CombiensHolder.csv")
